@@ -209,3 +209,61 @@ nav a:hover {
     height: auto;
     aspect-ratio: 16 / 9;
 }
+
+.resource-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+}
+
+.resource-link {
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 6px;
+    background-color: #1f3b5b;
+    color: white;
+    font-weight: bold;
+}
+
+.resource-link:hover {
+    background-color: #294f78;
+}
+
+nav a[aria-current="location"] {
+    background-color: #e3edf7;
+    text-decoration: underline;
+}
+
+.team-container {
+    align-items: start;
+}
+
+.team-bio {
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+[role="button"]:focus-visible {
+    outline: 3px solid #b96800;
+    outline-offset: 4px;
+}
+
+.resource-controls {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+}
+
+.page-controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; margin: 16px 0; }
+.page-controls button, .page-controls select { font: inherit; padding: 10px 14px; border: 1px solid #1f3b5b; border-radius: 6px; background: white; color: #1f3b5b; }
+.page-controls button { cursor: pointer; }
+.page-controls button:disabled { opacity: .45; cursor: default; }
+.page-controls :focus-visible, summary:focus-visible { outline: 3px solid #b96800; outline-offset: 4px; }
+.document-viewer canvas { display: block; width: 100%; height: auto; border: 1px solid #ddd; }
+.document-viewer canvas[hidden] { display: none; }
+.document-viewer details { margin-top: 16px; }
+.document-viewer summary { cursor: pointer; color: #1f3b5b; font-weight: bold; }
+.slide-content { border: 1px solid #d9e2ea; background: #f5f7fa; padding: 24px; border-radius: 8px; overflow-wrap: anywhere; }
+.slide-content p { white-space: pre-line; }
