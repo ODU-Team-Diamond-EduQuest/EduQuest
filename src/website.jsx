@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Pressable, Text, StyleSheet } from 'react-native';
-import { PdfViewer, PresentationViewer } from './resource-viewers.jsx';
 
 // Read the existing HTML once so it remains the content source and no-script fallback.
 const root = document.getElementById('website-root');
@@ -21,9 +20,9 @@ const content = {
   resources: ['documents', 'presentation'].map(id => {
     const section = root.querySelector(`#${id}`);
     const frame = section.querySelector('iframe');
-    return { id, title: text(section.querySelector('h2')), help: text(section.querySelector('p:not(.resource-actions)')),
+    return { id, title: text(section.querySelector('h2')),
       links: [...section.querySelectorAll('a')].map(a => ({ label: text(a), href: a.getAttribute('href'), download: a.hasAttribute('download') })),
-      src: frame.getAttribute('src'), frameTitle: frame.title, frameClass: frame.className };
+      src: frame.getAttribute('src'), frameTitle: frame.title };
   }),
   footer: text(root.querySelector('footer p')),
 };
@@ -82,19 +81,10 @@ function Team() {
 }
 
 function ResourceSection({ resource }) {
-  const [visible, setVisible] = useState(true);
-  const [version, setVersion] = useState(0);
   return <section id={resource.id}>
     <h2>{resource.title}</h2>
-    <p className="resource-actions">{resource.links.map(link => <a key={link.href + link.download} className={link.download ? undefined : 'resource-link'} href={link.href} download={link.download || undefined} target={link.download ? undefined : '_blank'} rel={link.download ? undefined : 'noopener'}>{link.label}</a>)}</p>
-    <p>{resource.help}</p>
-    <div className="resource-controls">
-      <Button aria-expanded={visible} aria-controls={`${resource.id}-preview`} onPress={() => setVisible(!visible)}>{visible ? 'Hide preview' : 'Show preview'}</Button>
-      {visible && <Button onPress={() => setVersion(version + 1)}>Reload preview</Button>}
-    </div>
-    <div id={`${resource.id}-preview`} hidden={!visible}>
-      {visible && (resource.id === 'documents' ? <PdfViewer key={version} src={resource.src} /> : <PresentationViewer key={version} />)}
-    </div>
+    <iframe width="100%" height="800" title={resource.frameTitle} src={resource.src} allowFullScreen={resource.id === 'presentation'} />
+    <p>{resource.links.map(link => <a key={link.href} href={link.href} target="_blank" rel="noopener">{link.label}</a>)}</p>
   </section>;
 }
 

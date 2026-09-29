@@ -1,39 +1,28 @@
 # Frontend contribution
 
-The existing website is rendered through React components in src/website.jsx. All project text, biographies, photos, and resource URLs come from index.html. That HTML remains readable when JavaScript is disabled.
+The existing website is rendered through React components in src/website.jsx. Project text, biographies, photos, and resource URLs come from index.html, which also provides a readable fallback when JavaScript is disabled.
 
-## Components
+## Changes
 
-- Header, Home, About, and Footer preserve the existing content.
-- Navigation indicates the current section and supports anchor links.
-- Team cards expand or collapse each complete biography.
-- Documents and Presentation keep direct resource links above previews, with Show/Hide and Reload controls.
+- React navigation indicates the current section and supports anchor links.
+- Each team biography can be expanded or collapsed independently.
+- Header, Home, About, Footer, and all original content are preserved.
+- The outline and presentation use the original GitHub website's 800-pixel embedded viewers and direct new-tab links. No custom document viewer, slide text copy, or additional project section is included.
 
-Buttons use React Native Pressable and Text through React Native Web, matching one of the frontend technologies in the presentation. Semantic HTML supplies headings, links, and document frames. JavaScript provides interactions. This does not select a final mobile-app framework.
-
-No new project sections, dashboards, accounts, backend, or device controls are included. How EduQuest Works has been removed.
+Buttons use React Native Pressable and Text via React Native Web. Semantic HTML provides website structure. This frontend contribution does not select the final mobile application framework.
 
 ## Build and preview
 
-Requires Node.js 22.12+ and pnpm 10. Run these commands from the repository:
+Requires Node.js 22.12+ and pnpm 10. From this repository, run:
 
     pnpm install --frozen-lockfile
     pnpm build
     python -m http.server 8041 --bind 127.0.0.1
 
-Open http://127.0.0.1:8041/. Edit content in index.html, interactions in src/website.jsx, and styling in style.css. Rebuild after JavaScript changes and refresh.
+Open http://127.0.0.1:8041/ in a regular browser. Edit content in index.html, interactions in src/website.jsx, and styling in style.css. Rebuild JavaScript changes, then refresh.
 
-The generated assets/frontend/website.js bundle is committed for static GitHub Pages compatibility. Include the rebuilt bundle with component changes. The build replaces only assets/frontend/. Preserve dependency license comments.
+Commit assets/frontend/website.js with source changes for static GitHub Pages compatibility. The build replaces only assets/frontend/. Keep dependency license comments intact. GitHub Actions checks the bundle but does not deploy.
 
-GitHub Actions rebuilds and checks the committed bundle. It does not deploy or change Pages settings.
+## Browser support
 
-## Review
-
-Check navigation, keyboard access, independent biography controls, preview controls, direct resource links, and phone layouts. Disable JavaScript to verify original content remains available.
-
-PDF support and Google Slides availability depend on the browser and network. React cannot guarantee external previews load; direct links remain available.
-## Resource viewers
-
-The outline uses PDF.js to render its original pages without a browser PDF plugin. Its standalone viewer is outline.html. The presentation preserves the original Google Slides embed, with an optional text fallback from the published deck (25 slides, captured September 28, 2026). Its standalone viewer is presentation.html. The saved fallback in src/presentation.json must be refreshed when the team changes the deck; the original embed remains live.
-
-The build also creates viewer.js, shared chunks, and pdf.worker.min.mjs in assets/frontend/. Include the whole generated folder when committing a rebuild.
+The PDF embed requires a browser with a PDF viewer. Google Slides requires network access. Embedded in-app browsers may not support PDF display, external frames, or new-tab links. Use regular Edge or Chrome to review the original viewers. Website code cannot enable a host browser feature that is disabled.

@@ -8,7 +8,6 @@
     "preview": "python -m http.server 8041 --bind 127.0.0.1"
   },
   "dependencies": {
-    "pdfjs-dist": "^6.3.289",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-native-web": "^0.21.0"
