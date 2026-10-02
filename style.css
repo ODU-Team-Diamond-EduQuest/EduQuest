@@ -31,7 +31,7 @@ nav {
 nav a {
     text-decoration: none;
     color: #1f3b5b;
-    margin: 15px;
+    padding: 10px 12px;
     font-weight: bold;
 }
 
@@ -118,8 +118,7 @@ footer {
     }
 
     nav a {
-        display: inline-block;
-        margin: 8px;
+        padding: 10px 12px;
     }
 
     main {
@@ -137,4 +136,86 @@ footer {
     .team-member img {
         height: 450px;
     }
+}
+/* Keyboard access and clear interactive controls. */
+a {
+    color: #1f3b5b;
+    text-underline-offset: 0.2em;
+}
+
+a:focus-visible {
+    outline: 3px solid #1f3b5b;
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 10;
+    padding: 12px 18px;
+    background: white;
+    border-radius: 6px;
+    transform: translateY(calc(-100% - 20px));
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin-top: 12px;
+    border-radius: 6px;
+    background: white;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.hero-button:hover {
+    background: #e3edf7;
+    text-decoration: underline;
+}
+
+.hero-button:focus-visible {
+    outline-color: white;
+}
+
+.nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 16px;
+}
+
+nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    border-radius: 6px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+    background: #f5f7fa;
+}
+
+nav a[aria-current="location"] {
+    background-color: #e3edf7;
+    text-decoration: underline;
+}
+
+.team-container {
+    align-items: start;
+}
+
+.team-bio {
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+[role="button"]:focus-visible {
+    outline: 3px solid #b96800;
+    outline-offset: 4px;
 }
