@@ -9,7 +9,16 @@ const content = {
   title: text(root.querySelector('h1')),
   hero: [...root.querySelectorAll('header p')].map(text),
   navigation: [...root.querySelectorAll('nav a')].map(a => ({ label: text(a), id: a.hash.slice(1) })),
-  sections: ['home', 'about'].map(id => ({ id, title: text(root.querySelector(`#${id} h2`)), paragraphs: [...root.querySelectorAll(`#${id} p`)].map(text) })),
+  sections: ['home', 'about'].map(id => ({
+    id,
+    title: text(root.querySelector(`#${id} h2`)),
+    content: [...root.querySelector(`#${id}`).children]
+      .filter(element => element.tagName !== 'H2')
+      .map(element => ({
+        type: element.tagName.toLowerCase(),
+        text: text(element)
+      }))
+  })),
   teamTitle: text(root.querySelector('#team h2')),
   teamIntro: text(root.querySelector('#team .section-intro')),
   members: [...root.querySelectorAll('.team-member')].map((member, index) => ({
@@ -60,7 +69,16 @@ function Navigation() {
 }
 
 function TextSection({ section }) {
-  return <section id={section.id}><h2>{section.title}</h2>{section.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}</section>;
+  return (
+    <section id={section.id}>
+      <h2>{section.title}</h2>
+      {section.content.map((item, index) =>
+        item.type === 'h3'
+          ? <h3 key={index}>{item.text}</h3>
+          : <p key={index}>{item.text}</p>
+      )}
+    </section>
+  );
 }
 
 function TeamMember({ member }) {

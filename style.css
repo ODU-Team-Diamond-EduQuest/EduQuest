@@ -52,6 +52,13 @@ h2 {
     color: #1f3b5b;
 }
 
+h3 {
+    color: #1f3b5b;
+    font-size: 1.4rem;
+    margin-top: 25px;
+    margin-bottom: 10px;
+}
+
 .team-container {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -145,6 +152,21 @@ a {
 
 a:focus-visible {
     outline: 3px solid #1f3b5b;
+    outline-offset: 4px;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #e3edf7;
+    text-decoration: underline;
+}
+
+footer a:focus-visible {
+    outline: 3px solid white;
     outline-offset: 4px;
 }
 
