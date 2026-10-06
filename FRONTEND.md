@@ -1,13 +1,13 @@
 # Frontend contribution
 
-The existing website is rendered through React components in src/website.jsx. Project text, biographies, photos, and resource URLs come from index.html, which also provides a readable fallback when JavaScript is disabled.
+React enhances navigation and team biographies through src/website.jsx. All other sections stay in index.html so team content updates are preserved. The HTML also provides a readable fallback when JavaScript is disabled.
 
 ## Changes
 
 - React navigation indicates the current section and supports anchor links.
 - Each team biography can be expanded or collapsed independently.
 - Header, Home, About, Footer, and all original content are preserved.
-- The outline and presentation use the original GitHub website's 800-pixel embedded viewers and direct new-tab links. No custom document viewer, slide text copy, or additional project section is included.
+- Documents, presentations, glossary, references, and footer links remain unchanged by React.
 
 Buttons use React Native Pressable and Text via React Native Web. Semantic HTML provides website structure. This frontend contribution does not select the final mobile application framework.
 
