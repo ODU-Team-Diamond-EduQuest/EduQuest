@@ -65,6 +65,12 @@ h3 {
     gap: 25px;
 }
 
+.section-intro-team {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 .team-member {
     min-width: 0;
     padding: 20px;
@@ -96,6 +102,12 @@ h3 {
 
 .team-member > p:last-of-type {
     text-align: left;
+}
+
+.section-intro-outline {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 iframe {
